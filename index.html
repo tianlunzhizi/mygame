@@ -1,11 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>Hello</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="apple-touch-fullscreen" content="YES">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <title>AR</title>
+    <!-- <script src="./libs/eruda.min.js"></script>
+    <script>
+        window.onload = function(){
+            var el = document.createElement('div');
+            document.body.appendChild(el);
+            eruda.init({container: el});
+        }
+    </script> -->
+    <script src="./aframe/build/aframe-ar.js"></script>
 </head>
-<body>
-Hello World!
-I'm Zhao
-change1
+<body style='margin : 0px; overflow: hidden;'>
+<a-scene embedded artoolkit='sourceType: webcam;'>
+    <a-box position='0 0 0.5' material='opacity: 0.5;'></a-box>
+    <a-marker-camera preset='hiro'></a-marker-camera>
+</a-scene>
 </body>
+
 </html>
