@@ -18,7 +18,7 @@
     <!--<script src="aframe/build/aframe-ar.js"></script>-->
 </head>
 <body>
-<video id="player"></video>
+<video id="player" width="100%"></video>
 </body>
 <script>
     (function () {
@@ -26,9 +26,9 @@
             alert(navigator.mediaDevices.getUserMedia);
             var player = document.getElementById("player");
             navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: "user" } })
-                    .then(function (steam) {
+                    .then(function (stream) {
                         alert("OK");
-                        player.src = steam;
+                        player.src = window.URL.createObjectURL(stream);
                         player.play();
                     })
                     .catch(function (err) {
