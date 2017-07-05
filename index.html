@@ -25,7 +25,7 @@
         try{
             alert(navigator.mediaDevices.getUserMedia);
             var player = document.getElementById("player");
-            navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: "user" } })
+            navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: "environment" } })
                     .then(function (stream) {
                         alert("OK");
                         player.src = window.URL.createObjectURL(stream);
