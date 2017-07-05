@@ -7,21 +7,36 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <title>AR</title>
-    <!-- <script src="./libs/eruda.min.js"></script>
+    <script src="./libs/eruda.min.js"></script>
     <script>
         window.onload = function(){
             var el = document.createElement('div');
             document.body.appendChild(el);
             eruda.init({container: el});
         }
-    </script> -->
-    <script src="aframe/build/aframe-ar.js"></script>
+    </script>
+    <!--<script src="aframe/build/aframe-ar.js"></script>-->
 </head>
-<body style='margin : 0px; overflow: hidden;'>
-<a-scene embedded artoolkit='sourceType: webcam;'>
-    <a-box position='0 0 0.5' material='opacity: 0.5;'></a-box>
-    <a-marker-camera preset='hiro'></a-marker-camera>
-</a-scene>
+<body>
+<video id="player"></video>
 </body>
-
+<script>
+    (function () {
+        try{
+            alert(navigator.mediaDevices.getUserMedia);
+            var player = document.getElementById("player");
+            navigator.mediaDevices.getUserMedia({ audio: true, video: { facingMode: "user" } })
+                    .then(function (steam) {
+                        alert("OK");
+                        player.src = steam;
+                        player.play();
+                    })
+                    .catch(function (err) {
+                        alert(err);
+                    })
+        }catch(e){
+            alert(e);
+        }
+    })();
+</script>
 </html>
