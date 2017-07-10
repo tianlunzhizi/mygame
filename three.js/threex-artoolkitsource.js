@@ -234,10 +234,15 @@ THREEx.ArToolkitSource.prototype.toggleMobileTorch = function(){
 //          handle resize
 ////////////////////////////////////////////////////////////////////////////////
 
-THREEx.ArToolkitSource.prototype.onResize = function(mirrorDomElements){
+THREEx.ArToolkitSource.prototype.onResize = function(aspect ,mirrorDomElements){
 	var _this = this
 	var screenWidth = window.innerWidth
-	var screenHeight = window.innerHeight
+	var screenHeight
+	if(aspect){
+		screenHeight = screenWidth * aspect
+	}else{
+		screenHeight = window.innerHeight
+	}
 
 	// compute sourceWidth, sourceHeight
 	if( this.domElement.nodeName === "IMG" ){
