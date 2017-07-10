@@ -185,19 +185,38 @@
 	var mesh	= new THREE.Mesh( geometry, material );
 	mesh.position.y	= geometry.parameters.height/2
 	// markerRoot.add( mesh );
-	arWorldRoot.add(mesh)
+	// arWorldRoot.add(mesh)
 	
 	var geometry	= new THREE.TorusKnotGeometry(0.3,0.1,64,16);
 	var material	= new THREE.MeshNormalMaterial(); 
 	var mesh	= new THREE.Mesh( geometry, material );
 	mesh.position.y	= 0.5
 	// markerRoot.add( mesh );
-	arWorldRoot.add( mesh );
+	// arWorldRoot.add( mesh );
 	
-	onRenderFcts.push(function(delta){
-		mesh.rotation.x += delta * Math.PI
-	})
+	// onRenderFcts.push(function(delta){
+	// 	mesh.rotation.x += delta * Math.PI
+	// })
 
+	var earth;
+	function addEarthMod() {
+		// 地球
+		var texture1  = THREE.ImageUtils.loadTexture('../../data/images/earth.jpg');
+		earth = new THREE.Mesh(new THREE.SphereGeometry(1, 50,50),
+				//new THREE.MeshLambertMaterial({color:0x0ffff0})
+				new THREE.MeshLambertMaterial({  map: texture1})
+		);
+
+		arWorldRoot.add(earth);
+		earth.position.y = 2;
+	}
+
+	addEarthMod();
+
+	onRenderFcts.push(function(delta){
+		earth.rotation.x += delta * Math.PI;
+	});
+	
 	//////////////////////////////////////////////////////////////////////////////////
 	//		render the whole thing on the page
 	//////////////////////////////////////////////////////////////////////////////////
